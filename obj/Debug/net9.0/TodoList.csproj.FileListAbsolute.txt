@@ -39,3 +39,4 @@ C:\Users\ClémentTHOREZ\Documents\Cours C#\Projet C#\TodoList\obj\Debug\net9.0\r
 C:\Users\ClémentTHOREZ\Documents\Cours C#\Projet C#\TodoList\obj\Debug\net9.0\TodoList.pdb
 C:\Users\ClémentTHOREZ\Documents\Cours C#\Projet C#\TodoList\obj\Debug\net9.0\TodoList.genruntimeconfig.cache
 C:\Users\ClémentTHOREZ\Documents\Cours C#\Projet C#\TodoList\obj\Debug\net9.0\ref\TodoList.dll
+C:\Users\ClémentTHOREZ\Documents\Cours C#\Projet C#\TodoList\obj\Debug\net9.0\TodoList.sourcelink.json

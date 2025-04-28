@@ -39,7 +39,7 @@ if (readResult != null)
 switch (menuSelection)
 {
     case "1": // Lister toutes les tâches
-        TaskServices.ShowAllTasks();
+        TaskServices.GetAllTasks();
         break;
 
     case "2": // Ajouter une tâche
@@ -54,7 +54,25 @@ switch (menuSelection)
         }
         break;
 
-    case "3":
+    case "3": // Supprimer une tâche
+        var id = 0;
+        TaskServices.GetAllTasks();
+        System.Console.WriteLine("Indiquer l'ID de la tâche à supprimer :");
+        readResult = Console.ReadLine();
+        if (readResult != null)
+        {
+            id = int.Parse(readResult.Trim());
+        }
+        try
+        {
+            TaskServices.DeleteTask(id);
+            System.Console.WriteLine("✅La tâche à été supprimée avec succès !");
+        }
+        catch (System.Exception err)
+        {
+            System.Console.WriteLine($"❌ Erreur lors de l'insertion : {err.Message}");
+            throw;
+        }
         break;
 
     case "4":
