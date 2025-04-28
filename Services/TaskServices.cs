@@ -49,7 +49,14 @@ public class TaskServices
 
         foreach (DataRow task in tasks.Rows)
         {
-            System.Console.WriteLine($"{task["id"]} - {task["title"]}");
+            if ((Int64)task["is_done"] == 1)
+            {
+                System.Console.WriteLine($"[x] - {task["title"]} ({task["id"]})");
+            }
+            else
+            {
+                System.Console.WriteLine($"[ ] - {task["title"]} ({task["id"]})");
+            }
 
             /* Autre syntaxe
             foreach (DataColumn col in tasks.Columns)
@@ -62,11 +69,25 @@ public class TaskServices
         return tasks;
     }
 
+    public static DataTable GetAllTasksWithoutMark()
+    {
+        var markedTasks = GetDataTable("SELECT * FROM task WHERE is_done = 0");
+
+        foreach (DataRow task in markedTasks.Rows)
+        {
+            System.Console.WriteLine($"[ ] - {task["title"]}");
+        }
+        return markedTasks;
+    }
     public static void DeleteTask(int id)
     {
         ExecuteNonQuery("DELETE FROM task WHERE id=@id", new Dictionary<string, object> { ["@id"] = id });
     }
 
+    public static void MarkedTask(int id)
+    {
+        GetDataTable("UPDATE task SET is_done = 1 WHERE id = @id", new Dictionary<string, object> { ["@id"] = id });
+    }
     /* Private */
     private static string dbfile = @"C:\Users\ClémentTHOREZ\Documents\Cours C#\Projet C#\TodoList\BDD\todolist.db";
 
